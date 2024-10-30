@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Labyrinth | PLAY</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #1c1c1c, #111);
+      color: white;
+    }
+    .grid-box {
+      background: rgba(255, 255, 255, 0.1); 
+      border: 1px solid rgba(255, 255, 255, 0.3); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .grid-box:hover {
+      transform: scale(1.05); 
+      box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3); 
+    }
+    .row{
+      display: grid;
+      grid-template-columns: 5vw 1vw 5vw 1vw 5vw 1vw 5vw 1vw 5vw 1vw 5vw;
+      grid-template-rows: 5vw;
+      gap: 5px;
+      margin: 5px 0;
+    }
+    .horizontal{
+      display: grid;
+      grid-template-columns: 5vw 1vw 5vw 1vw 5vw 1vw 5vw 1vw 5vw 1vw 5vw;
+      grid-template-rows: 1vw;
+      gap: 5px;
+      margin: 5px 0;
+    }
+    .hid{
+      visibility: hidden;
+    }
+    @media (max-width:768px) {
+      .row{
+      display: grid;
+      grid-template-columns: 7vw 2vw 7vw 2vw 7vw 2vw 7vw 2vw 7vw 2vw 7vw;
+      grid-template-rows: 7vw;
+    }
+    .horizontal{
+      display: grid;
+      grid-template-columns: 7vw 2vw 7vw 2vw 7vw 2vw 7vw 2vw 7vw 2vw 7vw;
+      grid-template-rows: 2vw;
+
+    }
+    }
+    @media (max-width:480px) {
+      .row{
+      display: grid;
+      grid-template-columns: 9vw 3vw 9vw 3vw 9vw 3vw 9vw 3vw 9vw 3vw 9vw;
+      grid-template-rows: 9vw;
+    }
+    .horizontal{
+      display: grid;
+      grid-template-columns: 9vw 3vw 9vw 3vw 9vw 3vw 9vw 3vw 9vw 3vw 9vw;
+      grid-template-rows: 3vw;
+    }
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+<div class="flex justify-center items-center rounded-3xl">
+  <div class="w-56 h-12 bg-neutral-900 flex justify-center items-center rounded-3xl">
+    <div class="flex flex-col items-center justify-center rounded-2xl bg-neutral-900 shadow-inner shadow-gray-50 w-52 h-12">
+      <div class="flex justify-around items-center text-gray-34">
+        <span id="min" class="z-10 flex items-center text-4xl text-amber-600 [text-shadow:_2px_2px_#fff,_1px_2px_#fff]">02</span><span class="text-xl font-bold text-gray-50 [text-shadow:none]">:</span><span class="z-10 flex items-center text-4xl text-amber-600 [text-shadow:_2px_2px_#fff,_1px_2px_#fff]" id="sec">00</span>
+      </div>
+    </div>
+  </div>
+</div>
+  <div id="container" class="grid-background rounded-md shadow-xl">
+    <div class="max-w-xl w-full mx-auto bg-gray-900 rounded-xl overflow-hidden hidden" id="hidden">
+      <div class="max-w-md mx-auto pt-12 pb-14 px-5 text-center">
+        <div
+          class="inline-flex items-center justify-center w-12 h-12 mb-5 rounded-full"
+        >
+          <svg
+            viewBox="0 0 48 48"
+            height="100"
+            width="100"
+            y="0px"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <linearGradient
+              gradientUnits="userSpaceOnUse"
+              y2="37.081"
+              y1="10.918"
+              x2="10.918"
+              x1="37.081"
+              id="SVGID_1__8tZkVc2cOjdg_gr1"
+            >
+              <stop stop-color="#60fea4" offset="0"></stop>
+              <stop stop-color="#6afeaa" offset=".033"></stop>
+              <stop stop-color="#97fec4" offset=".197"></stop>
+              <stop stop-color="#bdffd9" offset=".362"></stop>
+              <stop stop-color="#daffea" offset=".525"></stop>
+              <stop stop-color="#eefff5" offset=".687"></stop>
+              <stop stop-color="#fbfffd" offset=".846"></stop>
+              <stop stop-color="#fff" offset="1"></stop>
+            </linearGradient>
+            <circle
+              fill="url(#SVGID_1__8tZkVc2cOjdg_gr1)"
+              r="18.5"
+              cy="24"
+              cx="24"
+            ></circle>
+            <path
+              d="M35.401,38.773C32.248,41.21,28.293,42.66,24,42.66C13.695,42.66,5.34,34.305,5.34,24	c0-2.648,0.551-5.167,1.546-7.448"
+              stroke-width="3"
+              stroke-miterlimit="10"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke="#10e36c"
+              fill="none"
+            ></path>
+            <path
+              d="M12.077,9.646C15.31,6.957,19.466,5.34,24,5.34c10.305,0,18.66,8.354,18.66,18.66	c0,2.309-0.419,4.52-1.186,6.561"
+              stroke-width="3"
+              stroke-miterlimit="10"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke="#10e36c"
+              fill="none"
+            ></path>
+            <polyline
+              points="16.5,23.5 21.5,28.5 32,18"
+              stroke-width="3"
+              stroke-miterlimit="10"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke="#10e36c"
+              fill="none"
+            ></polyline>
+          </svg>
+        </div>
+        <h4 id="message1" class="text-xl text-gray-100 font-semibold mb-5">
+          
+        </h4>
+        <p id="message2" class="text-gray-300 font-medium">
+          
+        </p>
+      </div>
+    </div>
+    
+</div>
+
+  <script src="script.js"></script>
+  <script src="timer.js"></script>
+
+</body>
+</html>

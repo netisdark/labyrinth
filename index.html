@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Labyrinth homepage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Styles */
+    body {
+      background: #0d0d0d;
+      font-family: 'Roboto', sans-serif;
+      color: #e5e5e5;
+    }
+
+    /* Animate box hover with a futuristic glow */
+    .futuristic-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.4);
+    }
+
+    .futuristic-box {
+      background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Neomorphic effect for 3D-like boxes */
+    .neomorphic {
+      box-shadow: 10px 10px 30px #0b0b0b, -10px -10px 30px #171717;
+      border-radius: 25px;
+    }
+
+    /* Futuristic background grid */
+    .grid-background {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .alert-box {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.8));
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
+      animation: slideIn 1s ease-out;
+      position: fixed;
+      top: 40px;
+      left: 50%;
+      transform: translate(-50%,0);
+      z-index: 100;
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        
+      }
+      100% {
+        opacity: 1;
+        
+      }
+    }
+
+    .glow-button {
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
+    }
+    /* Floating animation */
+    @keyframes floating {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .floating {
+      animation: floating 5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="grid-background">
+
+  <div id="alert" class="hidden alert-box p-6 text-center rounded-lg">
+    <h1 class="text-3xl font-bold text-cyan-300">Alert!</h1>
+    <p class="text-lg text-gray-200 mt-4" id="alert-text"></p>
+    <button id="closeAlert" class="mt-6 px-4 py-2 glow-button bg-cyan-300 text-black rounded-lg transition-transform hover:scale-110">Close</button>
+  </div>
+  <!-- Navbar -->
+  <header class="w-full p-6 flex justify-center items-center bg-black bg-opacity-50 backdrop-blur-md fixed top-0 z-10">
+    <nav>
+      <ul class="flex space-x-8">
+        <li><a href="#home" class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center"><i class='fa fa-home'></i></a></li>
+        <li><a href="#help" class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center"><i class='fa fa-question'></i></a></li>
+        <li><a href="#form" class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center"><i class='fa fa-wpforms'></i></a></li>
+        <li><a href="#contact" class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center"><i class='fas fa-address-book'></i></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center text-center text-white">
+    <div class="max-w-4xl px-6 py-20 futuristic-box neomorphic floating">
+      <h2 class="text-4xl font-bold mb-4">Welcome to the Labyrinth</h2>
+      <p class="text-xl mb-6">Begin the journey of your intuition.</p>
+      <a href="#form" class="bg-indigo-600 px-8 py-3 rounded-full text-white hover:bg-indigo-800 transition">Start Playing</a>
+    </div>
+  </section>
+  <!-- Help Section -->
+  <section id="help" class="min-h-screen p-12 flex items-center justify-center">
+    <div class="max-w-3xl text-center futuristic-box neomorphic p-8">
+      <h2 class="text-3xl font-bold mb-4">How to Play</h2>
+      <p class="text-lg mb-6">Follow these steps to learn about the labyrinth.</p>
+      
+      <div class="space-y-4 text-left">
+        <div class="flex items-start">
+          <!-- <div class="bg-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center mr-4">1</div> -->
+          <p class="text-lg">You'll be given 6x6 (1 to 6) Horizontally, (A to F) Vertically grids with borders between them.</p>
+        </div>
+  
+        <div class="flex items-start">
+          <!-- <div class="bg-green-600 text-white rounded-full h-8 w-8 flex items-center justify-center mr-4">2</div> -->
+          <p class="text-lg">Fill in 20 boxes and set Starting and Ending points for your opponent.</p>
+        </div>
+  
+        <div class="flex items-start">
+          <!-- <div class="bg-red-600 text-white rounded-full h-8 w-8 flex items-center justify-center mr-4">3</div> -->
+          <p class="text-lg">Then Click on 'OK' then wait for your opponent.</p>
+        </div>
+  
+        <div class="flex items-start">
+          <!-- <div class="bg-blue-600 text-white rounded-full h-8 w-8 flex items-center justify-center mr-4">4</div> -->
+          <p class="text-lg">Then you'll be given another 6x6 box with hidden borders.</p>
+        </div>
+
+        <div class="flex items-start">
+          <!-- <div class="bg-yellow-600 text-white rounded-full h-8 w-8 flex items-center justify-center mr-4">5</div> -->
+          <p class="text-lg">Then you got to start from starting point to ending point set by your opponent, your opponent will do the same.</p>
+        </div>
+
+        <div class="flex items-start">
+          <!-- <div class="bg-orange-600 text-white rounded-full h-8 w-8 flex items-center justify-center mr-4">6</div> -->
+          <p class="text-lg">Each time you cross the wall, turn will be switched.</p>
+        </div>
+
+        <div class="flex items-start">
+          <!-- <div class="bg-violet-600 text-white rounded-full h-8 w-8 flex items-center justify-center mr-4">7</div> -->
+          <p class="text-lg">Whoever reaches the end point first will be victorious.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Form Section -->
+<section id="form" class="min-h-screen p-12 flex items-center justify-center">
+  <div class="max-w-lg futuristic-box neomorphic p-8">
+    <h2 id="h2" class="text-3xl font-bold mb-6 text-center">Create Game</h2>
+    <form id="create">
+      <!-- Name Field -->
+      <div class="mb-6">
+        <label for="name" class="block text-lg mb-2">Name</label>
+        <input type="text" id="createname" name="name" class="w-full p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Enter Game Name" required>
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-6 relative">
+        <label for="password" class="block text-lg mb-2">Password</label>
+        <input type="password" id="password" name="password" class="w-full p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Enter Game Password" required>
+      </div>
+
+      <!-- Show Password Checkbox -->
+      <div class="mb-6 flex items-center">
+        <input type="checkbox" id="show-password" class="mr-2">
+        <label for="show-password" class="text-lg">Show Password</label>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="bg-indigo-600 hover:bg-indigo-800 text-white py-2 px-8 rounded-full transition">Submit</button>
+      </div>
+
+      <div class="text-center">
+        <p>or</p>
+        <button type="button" class="bg-indigo-600 hover:bg-indigo-800 text-white py-2 px-8 rounded-full transition" onclick="switchs('join')">Join Game Instead?</button>
+      </div>
+    </form>
+    <form id="join" style="display: none;">
+      <!-- Name Field -->
+      <div class="mb-6">
+        <label for="name" class="block text-lg mb-2">Name</label>
+        <input type="text" id="name" name="name" class="w-full p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Enter Game Name" required>
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-6 relative">
+        <label for="password" class="block text-lg mb-2">Password</label>
+        <input type="password" id="password-login" name="password" class="w-full p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Enter Game Password" required>
+      </div>
+
+      <!-- Show Password Checkbox -->
+      <div class="mb-6 flex items-center">
+        <input type="checkbox" id="show-password-login" class="mr-2">
+        <label for="show-password-login" class="text-lg">Show Password</label>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="bg-indigo-600 hover:bg-indigo-800 text-white py-2 px-8 rounded-full transition">Submit</button>
+      </div>
+      <div class="text-center">
+        <p>or</p>
+        <button type="button" class="bg-indigo-600 hover:bg-indigo-800 text-white py-2 px-8 rounded-full transition" onclick="switchs('create')">Create Game Instead?</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  // JavaScript for Show Password functionality
+  const showPasswordCheckbox = document.getElementById('show-password');
+  const passwordField = document.getElementById('password');
+  const showPasswordCheckboxForLogin = document.getElementById('show-password-login');
+  const passwordFieldForLogin = document.getElementById('password-login');
+
+  showPasswordCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+      passwordField.type = 'text';
+    } else {
+      passwordField.type = 'password';
+    }
+  });
+  showPasswordCheckboxForLogin.addEventListener('change', function() {
+    if (this.checked) {
+      passwordFieldForLogin.type = 'text';
+    } else {
+      passwordFieldForLogin.type = 'password';
+    }
+  });
+  function switchs(value){
+    if(value==='join'){
+      document.getElementById('join').style.display="block";
+      document.getElementById('create').style.display="none";
+      document.getElementById('h2').innerHTML="Join Game";
+      
+    }else{
+      document.getElementById('create').style.display="block";
+      document.getElementById('join').style.display="none";
+      document.getElementById('h2').innerHTML="Create Game";
+    }
+  }
+</script>
+
+  <!-- Contact Section -->
+  <section id="contact" class="min-h-screen flex items-center justify-center">
+    <div class="max-w-lg text-center p-8 futuristic-box neomorphic">
+      <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+      <p class="text-lg mb-6">Want to know more about our Labyrinth? Contact us and let's make something extraordinary.</p>
+      <a href="mailto:pergap3@gmail.com" class="bg-blue-600 px-6 py-2 rounded-full text-white hover:bg-blue-800 transition">Email Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="p-6 text-center bg-black bg-opacity-50 text-gray-400">
+    <p>&copy; 2024 Labyrinth. All rights reserved.</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="index.js"></script>
+
+</body>
+</html>
